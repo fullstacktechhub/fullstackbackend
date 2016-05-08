@@ -14,17 +14,18 @@ mongoDb.listDatabases(function (err, data) {
 mongoDb.listCollections('full_stack_developer_javascript', function (err, collections) {
     console.log(collections); // => [coll1, coll2, ...]
 });
-var options = {
-    database: 'full_stack_developer_javascript',
-    collectionName: 'users',
-    query: '{ "username": "srinivasa" }'
-};
+
 app.use(function(req, res, next) {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-app.get("/user", function(req, res) {
+app.get("/:user", function(req, res) {
+    var options = {
+        database: 'full_stack_developer_javascript',
+        collectionName: 'users',
+        query: '{ "username": req.params.user }'
+    };
     mongoDb.listDocuments(options, function (err, data) {
         var cipher = crypto.AES.encrypt(data[0].password, "12345678tvr");
         var userData = {"_id":data[0]._id,"username":data[0].username,"password":cipher.toString()};
