@@ -24,7 +24,7 @@ app.get("/:user", function(req, res) {
     var options = {
         database: 'full_stack_developer_javascript',
         collectionName: 'users',
-        query: '{ "username":'+req.params.user+'}'
+        query: '{ "username":"'+req.params.user+'"}'
     };
     mongoDb.listDocuments(options, function (err, data) {
         var cipher = crypto.AES.encrypt(data[0].password, "12345678tvr");
