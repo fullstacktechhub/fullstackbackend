@@ -1,0 +1,17 @@
+{
+  "name": "fullstacknode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "$rinivas",
+  "license": "ISC",
+  "dependencies": {
+    "crypto-js": "^3.1.6",
+    "express": "^4.13.4",
+    "mongolab-data-api": "^1.1.6",
+    "mongolab-provider": "^1.1.1"
+  }
+}
